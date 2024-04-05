@@ -32,10 +32,10 @@ This project will consist of four main inclusions:
 
 ## How to Run
 
-After completing the installation instructions, follow the steps listed below. 
+* After completing the installation instructions, follow the steps listed below. 
 
-```
-npm run ios
-```
+   ```
+   npm run ios
+   ```
 
 ## How to Test
