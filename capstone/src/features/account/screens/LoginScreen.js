@@ -1,13 +1,43 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Button, Alert } from 'react-native';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
-const LoginScreen = ({navigation}) => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Log in</Text>
-      <Button title="go to registration" onPress={() => navigation.navigate('RegistrationScreen')} />
-    </View>
-  );
+const LoginScreen = () => {
+  
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = () => {
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          Alert.alert('Login successful!', 'You have successfully logged in.');
+        })
+        .catch((error) => {
+          Alert.alert('Login failed.', error.message);
+        });
+    };
+
+    return (
+      <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <TextInput
+          placeholder="Email"
+          onChangeText={text => setEmail(text)}
+          value={email}
+          style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+        />
+        <TextInput
+          placeholder='Password'
+          onChangeText={text => setPassword(text)}
+          value={password}
+          secureTextEntry
+          style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+        />
+
+        <Button title = "Log in" onPress={handleLogin} />
+      </View>
+    )
+
 };
 
 export default LoginScreen;
