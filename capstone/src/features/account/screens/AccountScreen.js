@@ -37,13 +37,19 @@ const AccountScreen = ({ navigation }) => {
           />
         </>
       ) : (
-        <Text>Please login to view your account information</Text>
+        <Text>Please log in or register to view your account information</Text>
       )}
       {!user && (
-        <Button
-          title="Go to Login"
-          onPress={() => navigation.navigate('LoginScreen')}
-        />
+        <View>
+            <Button
+            title="Log in"
+            onPress={() => navigation.navigate('LoginScreen')}
+            />
+            <Button
+            title="Register"
+            onPress={() => navigation.navigate('RegistrationScreen')}
+            />
+        </View>
       )}
     </View>
   );
