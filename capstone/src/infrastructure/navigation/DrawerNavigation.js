@@ -15,7 +15,7 @@ const DrawerNavigation = () => {
         <NavigationContainer>
             <Drawer.Navigator initialRouteName='HomeScreen'>
                 <Drawer.Screen 
-                    name="Home Screen" 
+                    name="Home" 
                     component={HomeScreen} 
                     options={{drawerIcon: ({focused, size}) => (
                         <Ionicons name = 'home' size = {size} color = {focused} /> )}}
@@ -29,14 +29,14 @@ const DrawerNavigation = () => {
                 />
 
                 <Drawer.Screen 
-                    name='Login Screen' 
+                    name='Login' 
                     component={LoginScreen}
                     options={{drawerIcon: ({focused, size}) => (
                         <SimpleLineIcons name = 'login' size = {size} color = {focused} /> )}}
                 />
 
                 <Drawer.Screen 
-                    name='Registration Screen'
+                    name='Registration'
                     component={RegistrationScreen}
                     options={{drawerIcon: ({focused, size}) => (
                         <MaterialCommunityIcons name = 'account-plus' size = {size} color = {focused} /> )}}
