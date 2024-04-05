@@ -11,6 +11,7 @@ const LoginScreen = () => {
       const auth = getAuth();
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+          const user = userCredential.user;
           Alert.alert('Login successful!', 'You have successfully logged in.');
         })
         .catch((error) => {

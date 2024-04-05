@@ -1,9 +1,10 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {Ionicons, SimpleLineIcons, AntDesign} from "@expo/vector-icons";
+import {Ionicons, MaterialIcons, SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import HomeScreen from '../../features/account/screens/HomeScreen';
+import AccountScreen from '../../features/account/screens/AccountScreen';
 import LoginScreen from '../../features/account/screens/LoginScreen';
 import RegistrationScreen from '../../features/account/screens/RegistrationScreen';
 
@@ -20,6 +21,13 @@ const DrawerNavigation = () => {
                         <Ionicons name = 'home' size = {size} color = {focused} /> )}}
                 />
 
+                <Drawer.Screen
+                    name = "Account"
+                    component={AccountScreen}
+                    options={{drawerIcon: ({focused, size}) => (
+                        <MaterialIcons name = 'account-circle' size = {size} color = {focused} /> )}}
+                />
+
                 <Drawer.Screen 
                     name='Login Screen' 
                     component={LoginScreen}
@@ -31,7 +39,7 @@ const DrawerNavigation = () => {
                     name='Registration Screen'
                     component={RegistrationScreen}
                     options={{drawerIcon: ({focused, size}) => (
-                        <AntDesign name = 'login' size = {size} color = {focused} /> )}}
+                        <MaterialCommunityIcons name = 'account-plus' size = {size} color = {focused} /> )}}
                 />
             </Drawer.Navigator>
         </NavigationContainer>
