@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {collection, addDoc, getFirestore} from 'firebase/firestore';
 
 // RegistrationScreen.js
-const RegistrationScreen = () => {
+const RegistrationScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSignUp = () => {
       const auth = getAuth();
+      const db = getFirestore();
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           Alert.alert('Registration successful!', 'You have successfully registered.');

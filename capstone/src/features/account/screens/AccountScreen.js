@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './LoginScreen';
+import RegistrationScreen from './RegistrationScreen';
 
 const handleButtonPress = () => {
     console.log('sign out button pressed');
@@ -38,18 +41,6 @@ const AccountScreen = ({ navigation }) => {
         </>
       ) : (
         <Text>Please log in or register to view your account information</Text>
-      )}
-      {!user && (
-        <View>
-            <Button
-            title="Log in"
-            onPress={() => navigation.navigate('LoginScreen')}
-            />
-            <Button
-            title="Register"
-            onPress={() => navigation.navigate('RegistrationScreen')}
-            />
-        </View>
       )}
     </View>
   );
