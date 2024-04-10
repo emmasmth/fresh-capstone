@@ -40,8 +40,10 @@ const RegistrationScreen = ({navigation}) => {
           const userData = {
             name: name,
             email: userEmail,
-            phone: parseInt(phone),
-            dob: new Date(dob)
+            phone: phone,
+            dob: dob,
+            bank: 1000,
+            permission: 0
           }
           writedoc(userId, userData);
           Alert.alert('Registration successful!', 'You have successfully registered.');
