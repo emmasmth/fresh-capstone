@@ -17,7 +17,7 @@
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
     "body-parser": "^1.20.2",
-    "expo": "^50.0.14",
+    "expo": "^50.0.15",
     "expo-status-bar": "~1.11.1",
     "express": "^4.19.2",
     "firebase": "^10.10.0",

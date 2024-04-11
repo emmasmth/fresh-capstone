@@ -6,13 +6,12 @@ import { doc, setDoc, getFirestore } from 'firebase/firestore';
 const RegistrationScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [backup, setBackup] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [dob, setDob] = useState('');
 
     const handleSignUp = () => {
-      if(!email || !password || !backup || !name || !phone || !dob)
+      if(!email || !password || !name || !phone || !dob)
       {
         Alert.alert('Registration failed.', 'Please fill in all fields.');
         return;
@@ -21,12 +20,6 @@ const RegistrationScreen = ({navigation}) => {
       if(phone.length != 10 || isNaN(phone))
       {
         Alert.alert("Invalid phone number.", "Enter a phone number with 10 digits.");
-        return;
-      }
-
-      if(password !== backup)
-      {
-        Alert.alert("Passwords do not match.", "Please try again.");
         return;
       }
 
@@ -96,13 +89,6 @@ const RegistrationScreen = ({navigation}) => {
           placeholder='Create a Password'
           onChangeText={text => setPassword(text)}
           value={password}
-          secureTextEntry
-          style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
-        />
-        <TextInput
-          placeholder='Re-Enter Password'
-          onChangeText={text => setBackup(text)}
-          value={backup}
           secureTextEntry
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
         />
