@@ -17,6 +17,12 @@ This project will consist of four main inclusions:
 
 ## Installation Instructions
 
+* Sign up for [Firebase](https://firebase.google.com/) - must use a gmail email address.
+* Click **Go to console**.
+* Click **Create a project** and follow prompts.
+* Once project is created and open, click the **Web** icon (**</>**) and register your app.
+* Copy the block of text containing the apiKey, authDomain, projectId, storageBucket, messagingSenderId, and appId.
+
 * Clone this repo by clicking the green **<> Code** button. Choose **SSH** and copy the URL to your clipboard.
 * Open Terminal and on the command line, type the following lines, replacing the URL as indicated:
 
@@ -26,13 +32,33 @@ This project will consist of four main inclusions:
    ```
    cd fresh-capstone/capstone
    ```
+* Now, create a file (within the capstone directory, which you should currently be in) called config.js.
+* In config.js, copy the following code, replacing the relevant code with the Firebase connectivity information, copied earlier.
+   ```
+   
+   module.exports = {
+      firebaseConfig: {
+        
+        apiKey: <Your API key>,
+        authDomain: <Your Auth Domain>,
+        projectId: <Your Project ID>,
+        storageBucket: <Your Storage Bucket>,
+        messagingSenderId: <Your Messaging Sender ID>,
+        appId: <Your App ID>
+        }
+   };
+  
+   ```
+* In the command line, run the following line of code:
+
    ```
    npm install
    ```
 
 ## How to Run
 
-* After completing the installation instructions, follow the steps listed below. 
+
+* After completing the installation instructions, follow the step below to simulate the project. 
 
    ```
    npm run ios
