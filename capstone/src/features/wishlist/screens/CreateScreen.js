@@ -24,13 +24,6 @@ const CreateScreen = () => {
         const db = getFirestore();
         const unsubscribe = onAuthStateChanged(auth, (user) => {
         setUser(user);
-
-        if(!user)
-        {
-            Alert.alert("Please sign in to add a wish.");
-            return;
-        }
-
     });
     return () => unsubscribe();
 }, []);
