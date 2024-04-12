@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDocs, collection } from 'firebase/firestore';
 
 const handleButtonPress = () => {
     console.log('sign out button pressed');
@@ -25,14 +25,16 @@ const AccountScreen = ({ navigation }) => {
       if(user)
       {
         const db = getFirestore();
-        const docRef = doc(db, 'users', user.uid);
-        getDoc(docRef)
-          .then((docSnapshot) => {
-            if(docSnapshot.exists()) {
-              setUserData(docSnapshot.data());
+        const userRef = doc(db, 'users', user.uid);
+        const userInfoRef = collection(userRef, 'userInformation');
+        getDocs(userInfoRef)
+          .then((querySnapshot) => {
+            if(!querySnapshot.empty) {
+              const userData = querySnapshot.docs[0].data();
+              setUserData(userData);
             }
             else{
-              console.log('no doc.');
+              console.log('cant retreive doc.');
             }
           })
           .catch((error) => {

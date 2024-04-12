@@ -1,12 +1,14 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {Ionicons, MaterialIcons, SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {Ionicons, MaterialIcons, SimpleLineIcons, MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 
 import HomeScreen from '../../features/account/screens/HomeScreen';
 import AccountScreen from '../../features/account/screens/AccountScreen';
 import LoginScreen from '../../features/account/screens/LoginScreen';
 import RegistrationScreen from '../../features/account/screens/RegistrationScreen';
+import DashboardScreen from '../../features/wishlist/screens/DashboardScreen';
+import CreateScreen from '../../features/wishlist/screens/CreateScreen';
 
 
 
@@ -42,6 +44,20 @@ const DrawerNavigation = () => {
                     component={RegistrationScreen}
                     options={{drawerIcon: ({focused, size}) => (
                         <MaterialCommunityIcons name = 'account-plus' size = {size} color = {focused} /> )}}
+                />
+
+                <Drawer.Screen 
+                    name='My Wishlists'
+                    component={DashboardScreen}
+                    options={{drawerIcon: ({focused, size}) => (
+                        <Entypo name = 'list' size = {size} color = {focused} /> )}}
+                />
+
+                <Drawer.Screen 
+                    name='Add a Wish'
+                    component={CreateScreen}
+                    options={{drawerIcon: ({focused, size}) => (
+                        <Entypo name = 'add-to-list' size = {size} color = {focused} /> )}}
                 />
             </Drawer.Navigator>
         </NavigationContainer>

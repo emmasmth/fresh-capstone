@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc, getFirestore } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const RegistrationScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
@@ -11,6 +11,7 @@ const RegistrationScreen = ({navigation}) => {
     const [dob, setDob] = useState('');
 
     const handleSignUp = () => {
+      console.log('registration button pressed');
       if(!email || !password || !name || !phone || !dob)
       {
         Alert.alert('Registration failed.', 'Please fill in all fields.');
@@ -40,6 +41,11 @@ const RegistrationScreen = ({navigation}) => {
           }
           writedoc(userId, userData);
           Alert.alert('Registration successful!', 'You have successfully registered.');
+          setName('');
+          setEmail('');
+          setPhone('');
+          setDob('');
+          setPassword('');
         })
         .catch((error) => {
           Alert.alert('Registration failed.', error.message);
@@ -50,9 +56,10 @@ const RegistrationScreen = ({navigation}) => {
     {
       const db = getFirestore();
       const docRef = doc(db, 'users', userId);
-      setDoc(docRef, userData)
+      const userInfoRef = collection(docRef, 'userInformation');
+      addDoc(userInfoRef, userData)
         .then(() => {
-          console.log("document written");
+          console.log("registered!");
         })
         .catch((error) => {
           console.error('error writing doc');
@@ -66,24 +73,28 @@ const RegistrationScreen = ({navigation}) => {
           onChangeText={text => setName(text)}
           value={name}
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+          autoCapitalize='none'
         />
         <TextInput
           placeholder="Email"
           onChangeText={text => setEmail(text)}
           value={email}
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+          autoCapitalize='none'
         />
         < TextInput
           placeholder='Phone'
           onChangeText={text => setPhone(text)}
           value={phone}
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+          autoCapitalize='none'
         />
         < TextInput
           placeholder='Date of Birth: YYYY-MM-DD'
           onChangeText={text => setDob(text)}
           value={dob}
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+          autoCapitalize='none'
         />
         <TextInput
           placeholder='Create a Password'
@@ -91,6 +102,7 @@ const RegistrationScreen = ({navigation}) => {
           value={password}
           secureTextEntry
           style = {{marginBottom: 10, borderWidth: 1, padding: 8, width: 200}}
+          autoCapitalize='none'
         />
         <Button title = "Register" onPress={handleSignUp} />
       </View>
