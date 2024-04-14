@@ -9,6 +9,7 @@ import LoginScreen from '../../features/account/screens/LoginScreen';
 import RegistrationScreen from '../../features/account/screens/RegistrationScreen';
 import DashboardScreen from '../../features/wishlist/screens/DashboardScreen';
 import CreateScreen from '../../features/wishlist/screens/CreateScreen';
+import EnvironmentalScreen from '../../features/environmental/screens/EnvironmentalScreen';
 
 
 
@@ -58,6 +59,13 @@ const DrawerNavigation = () => {
                     component={CreateScreen}
                     options={{drawerIcon: ({focused, size}) => (
                         <Entypo name = 'add-to-list' size = {size} color = {focused} /> )}}
+                />
+
+                <Drawer.Screen 
+                    name='Environmental GFTing'
+                    component={EnvironmentalScreen}
+                    options={{drawerIcon: ({focused, size}) => (
+                        <MaterialCommunityIcons name = 'leaf-circle-outline' size = {size} color = {focused} /> )}}
                 />
             </Drawer.Navigator>
         </NavigationContainer>
