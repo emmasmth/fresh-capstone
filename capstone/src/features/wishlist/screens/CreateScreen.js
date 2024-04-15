@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TextInput, Button, Alert} from 'react-native';
+import {View, Text, TextInput, Button, Alert, Image} from 'react-native';
 import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
 
@@ -93,6 +93,7 @@ const writedoc = (userId, userData, listName) =>
 
     return (
         <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            
             <TextInput
             placeholder='Item Name'
             onChangeText={text => setItemName(text)}
