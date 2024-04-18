@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, Alert } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Button, Alert, Text } from 'react-native';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const RegistrationScreen = ({navigation}) => {
+    const [user, setUser] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [dob, setDob] = useState('');
+
+    useEffect(() => {
+      const auth = getAuth();
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+      });
+  
+      return () => unsubscribe();
+    }, []);
 
     const handleSignUp = () => {
       console.log('registration button pressed');
@@ -68,7 +78,11 @@ const RegistrationScreen = ({navigation}) => {
 
     return (
       <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TextInput
+        {user ? (
+          <Text>You are already signed in!</Text>
+        ) : (
+          <>
+            <TextInput
           placeholder='Name'
           onChangeText={text => setName(text)}
           value={name}
@@ -105,6 +119,9 @@ const RegistrationScreen = ({navigation}) => {
           autoCapitalize='none'
         />
         <Button title = "Register" onPress={handleSignUp} />
+          </>
+        )}
+        
       </View>
     );
 

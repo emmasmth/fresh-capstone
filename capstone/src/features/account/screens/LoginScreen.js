@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, Alert } from 'react-native';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Button, Alert, Text } from 'react-native';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 const LoginScreen = ({navigation}) => {
   
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const auth = getAuth();
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+      });
+  
+      return () => unsubscribe();
+    }, []);
 
     const handleLogin = () => {
       console.log("log in button pressed");
@@ -24,7 +34,13 @@ const LoginScreen = ({navigation}) => {
 
     return (
       <View style = {{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <TextInput
+        {user ? (
+          <>
+          <Text>You are already signed in!</Text>
+          </>
+        ) : (
+          <>
+          <TextInput
           placeholder="Email"
           onChangeText={text => setEmail(text)}
           value={email}
@@ -41,6 +57,8 @@ const LoginScreen = ({navigation}) => {
         />
 
         <Button title = "Log in" onPress={handleLogin} />
+          </>
+        )}
       </View>
     )
 
