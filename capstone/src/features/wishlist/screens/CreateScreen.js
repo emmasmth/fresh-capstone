@@ -41,9 +41,9 @@ const handleAdd = () => {
         return;
     }
 
-    if(!itemName || !price || !value)
+    if(!itemName || !price || !value || !tax || !tip)
     {
-      Alert.alert('Wish creation failed.', 'Please item name, price, and wishlist must be filled out.');
+      Alert.alert('Wish creation failed.', 'Item name, price, and wishlist must be filled out. If tax and tip not applicable, put 0.00.');
       return;
     }
     
