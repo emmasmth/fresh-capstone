@@ -58,6 +58,7 @@ const AccountScreen = ({ navigation }) => {
           <Text>Phone: {userData.phone}</Text>
           <Text>Date of Birth: {userData.dob}</Text>
           <Text>Bank Balance: {userData.bank}</Text>
+          <Text>Friend UID: {userData.friend}</Text>
           <Button 
             title = "Sign Out" 
             onPress = {handleButtonPress} 

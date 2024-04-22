@@ -47,7 +47,8 @@ const RegistrationScreen = ({navigation}) => {
             phone: phone,
             dob: dob,
             bank: 1000,
-            permission: 0
+            permission: 0,
+            friend: '9NMI24d5KYS7gdlBtI081SMn1Aw1'
           }
           writedoc(userId, userData);
           Alert.alert('Registration successful!', 'You have successfully registered.');

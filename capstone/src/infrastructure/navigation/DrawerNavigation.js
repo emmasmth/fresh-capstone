@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {Ionicons, MaterialIcons, SimpleLineIcons, MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import {Ionicons, MaterialIcons, SimpleLineIcons, MaterialCommunityIcons, Entypo, FontAwesome5 } from "@expo/vector-icons";
 
 import HomeScreen from '../../features/account/screens/HomeScreen';
 import AccountScreen from '../../features/account/screens/AccountScreen';
@@ -10,7 +10,7 @@ import RegistrationScreen from '../../features/account/screens/RegistrationScree
 import DashboardScreen from '../../features/wishlist/screens/DashboardScreen';
 import CreateScreen from '../../features/wishlist/screens/CreateScreen';
 import EnvironmentalScreen from '../../features/environmental/screens/EnvironmentalScreen';
-
+import FriendDashboardScreen from '../../features/friend/screens/FriendDashboardScreen';
 
 
 const Drawer = createDrawerNavigator();
@@ -66,6 +66,13 @@ const DrawerNavigation = () => {
                     component={EnvironmentalScreen}
                     options={{drawerIcon: ({focused, size}) => (
                         <MaterialCommunityIcons name = 'leaf-circle-outline' size = {size} color = {focused} /> )}}
+                />
+
+                <Drawer.Screen
+                    name="Friend's Wishlist"
+                    component={FriendDashboardScreen}
+                    options={{drawerIcon: ({focused, size}) => (
+                        <FontAwesome5 name = "user-friends" size = {size} color = {focused} /> )}}
                 />
             </Drawer.Navigator>
         </NavigationContainer>

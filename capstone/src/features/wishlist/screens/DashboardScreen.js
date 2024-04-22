@@ -145,7 +145,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < birthday.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
@@ -166,7 +166,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < holiday.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
@@ -187,7 +187,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < anniversary.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
@@ -208,7 +208,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < graduation.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
@@ -229,7 +229,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < careerSuccess.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
@@ -250,7 +250,7 @@ const DashboardScreen = ({ navigation }) => {
                 <Text>Event Date: {userData.eventDate}</Text>
                 <Text>Item Description: {userData.description}</Text>
                 <Text>Type: {userData.type}</Text>
-                {index < justBecause.length - 1 && <View style={{ marginBottom: 20 }} />}
+                {index < wedding.length - 1 && <View style={{ marginBottom: 20 }} />}
               </View>
             ))
           }
