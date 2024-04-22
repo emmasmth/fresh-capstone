@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Checkbox } from 'react-native';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 
@@ -23,7 +23,7 @@ const FriendWishesScreen = ({ }) => {
 
     const db = getFirestore();
     const justBecauseRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Just Because');
-          const unsubscribeJustBecause = onSnapshot(justBecauseRef, (querySnapshot) => {
+          onSnapshot(justBecauseRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -32,7 +32,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const birthdayRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Birthday');
-          const unsubscribeBirthday = onSnapshot(birthdayRef, (querySnapshot) => {
+          onSnapshot(birthdayRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -41,7 +41,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const holidayRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Holiday');
-          const unsubscribeHoliday = onSnapshot(holidayRef, (querySnapshot) => {
+          onSnapshot(holidayRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -50,7 +50,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const anniversaryRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Anniversary');
-          const unsubscribeAnniversary = onSnapshot(anniversaryRef, (querySnapshot) => {
+          onSnapshot(anniversaryRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -59,7 +59,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const graduationRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Graduation');
-          const unsubscribeGraduation = onSnapshot(graduationRef, (querySnapshot) => {
+          onSnapshot(graduationRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -68,7 +68,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const careerSuccessRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Career Success');
-          const unsubscribeCareerSuccess = onSnapshot(careerSuccessRef, (querySnapshot) => {
+          onSnapshot(careerSuccessRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -77,7 +77,7 @@ const FriendWishesScreen = ({ }) => {
           });
 
           const weddingRef = collection(db, 'users', '9NMI24d5KYS7gdlBtI081SMn1Aw1', 'Wedding');
-          const unsubscribeWedding = onSnapshot(weddingRef, (querySnapshot) => {
+          onSnapshot(weddingRef, (querySnapshot) => {
             const userDataArray = [];
             querySnapshot.forEach((doc) => {
               userDataArray.push(doc.data());
@@ -89,16 +89,12 @@ const FriendWishesScreen = ({ }) => {
     });
 
     return () => {
-        unsubscribeJustBecause();
-        unsubscribeBirthday();
-        unsubscribeHoliday();
-        unsubscribeAnniversary();
-        unsubscribeGraduation();
-        unsubscribeCareerSuccess();
-        unsubscribeWedding();
         unsubscribe();
     }
   }, ['9NMI24d5KYS7gdlBtI081SMn1Aw1']);
+
+
+
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -255,7 +251,7 @@ const FriendWishesScreen = ({ }) => {
 
           </>
         ) : (
-          <Text>No wishes found for this friend.</Text>
+          <Text>Please log in or register to see your friend's wishes.</Text>
         )}
       </View>
     </ScrollView>
