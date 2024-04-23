@@ -60,7 +60,8 @@ const handleAdd = () => {
         event: event,
         eventDate: eventDate,
         description: desc,
-        type: type
+        type: type,
+        status: 0
     }
     writedoc(user.uid, userData, value);
     Alert.alert('Wish added!', 'Your wish has successfully been added to your chosen wishlist.');
