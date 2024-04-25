@@ -1,13 +1,36 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import {scrapeProduct} from '../Scraper/scraper'
-// /capstone/src/features/environmental/scrape/scraper.js
+import { useNavigation } from '@react-navigation/native';
+import CreateScreen from "../../wishlist/screens/CreateScreen";
+
 const EnvironmentalScreen = () => {
     const [url, setURL] = useState('');
+    const navigation = useNavigation();
+
+    const navigateToAddWish = async (productUrl) => {
+        try {
+            const productData = await scrapeProduct(productUrl);
+            console.log("Scraped Data:", productData);
+
+            // Mapping scraped data to expected initialData format
+            const initialData = {
+                itemName: productData.productName,
+                price: productData.productPrice,
+                store: productData.hostname,
+                url: productData.url,
+            };
+
+            // navigation.navigate('CreateScreen', { initialData });
+            navigation.navigate('Add a Wish', {initialData});
+        } catch (error) {
+            console.error("Error scraping product:", error);
+        }
+    };
 
     const handleSubmit = () => {
         console.log('URL submitted:', url);
-        scrapeProduct(url); //pass url to scraper
+        navigateToAddWish(url);
         setURL('');
     };
 

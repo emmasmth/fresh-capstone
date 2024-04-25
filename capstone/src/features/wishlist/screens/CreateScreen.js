@@ -3,23 +3,47 @@ import {View, Text, TextInput, Button, Alert, Image} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {getAuth, onAuthStateChanged} from 'firebase/auth';
 import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
+import {route} from "express/lib/router";
 
-const CreateScreen = () => {
-    
+
+const CreateScreen = ({route}) => {
+    // const { initialData } = route.params || {};
+
+    // Check if initialData is received properly
+    console.log('Received initial data:', initialData);
+
+    const { initialData } = route.params || {};
+    const [itemName, setItemName] = useState(initialData ? initialData.itemName : '');
+    const [price, setPrice] = useState(initialData ? initialData.price : '');
+    const [store, setStore] = useState(initialData ? initialData.store : '');
+    const [url, setURL] = useState(initialData ? initialData.url : '');
+    const [tax, setTax] = useState('0.00');  // Always initialized to 0.00
+    const [tip, setTip] = useState('0.00');  // Always initialized to 0.00
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [user, setUser] = useState('');
-    const [itemName, setItemName] = useState('');
-    const [price, setPrice] = useState('');
-    const [tax, setTax] = useState('');
-    const [tip, setTip] = useState('');
-    const [store, setStore] = useState('');
-    const [url, setURL] = useState('');
     const [shoutout, setShoutout] = useState('');
     const [event, setEvent] = useState('');
     const [eventDate, setEventDate] = useState('');
     const [desc, setDesc] = useState('');
     const [type, setType] = useState('');
+
+
+    // const [open, setOpen] = useState(false);
+    // const [value, setValue] = useState(null);
+    // const [user, setUser] = useState('');
+    // const [itemName, setItemName] = useState('');
+    // const [price, setPrice] = useState('');
+    // const [tax, setTax] = useState('');
+    // const [tip, setTip] = useState('');
+    // const [store, setStore] = useState('');
+    // const [url, setURL] = useState('');
+    // const [shoutout, setShoutout] = useState('');
+    // const [event, setEvent] = useState('');
+    // const [eventDate, setEventDate] = useState('');
+    // const [desc, setDesc] = useState('');
+    // const [type, setType] = useState('');
 
     useEffect(() => {
         const auth = getAuth();

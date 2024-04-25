@@ -117,6 +117,12 @@ const sites = {
 
 
 async function scrapeProduct(url) {
+    let result = {
+        productName: "",
+        productPrice: "",
+        url: url,
+        hostname: ""
+    };
     try {
         const response = await axios.get(url, {
             headers: {
@@ -125,6 +131,7 @@ async function scrapeProduct(url) {
         });
         const $ = cheerio.load(response.data);
         const hostname = new URL(url).hostname.replace('www.', ''); //get hostname, removes 'www.'
+        result.hostname = hostname;
 
         if (sites[hostname]) {
             const { nameSelector, priceSelector, priceAttr } = sites[hostname]; //pick site
@@ -132,29 +139,26 @@ async function scrapeProduct(url) {
             let productPriceElement = $(priceSelector); //scrape product price
             let productPrice = priceAttr ? productPriceElement.attr(priceAttr) : productPriceElement.text(); //deals with if price is an attribute instead of text
 
-            // if (productPrice) { //clean up price
-            //     productPrice = productPrice.trim();
-            //     productPrice = productPrice.replace(/[^\d.]/g, '');
-            // } else {
-            //     console.log(`Price not found using selector: ${priceSelector} and attribute: ${priceAttr}`);
-            // }
-
             // clean up price
             productPrice = productPrice.replace(/[^\d.]/g, '');  // remove non-numeric characters except decimal
             productPrice = parseFloat(productPrice).toFixed(2); //to float (2 digits after decimal)
 
             //printing
-            console.log(`Scraping results for ${url}:`);
-            console.log(`Hostname: ${hostname}`);
-            console.log(`Product Name: ${productName}`);
-            console.log(`Product Price: ${productPrice}`);
-            console.log('\n');
+            // console.log(`Scraping results for ${url}:`);
+            // console.log(`Hostname: ${hostname}`);
+            // console.log(`Product Name: ${productName}`);
+            // console.log(`Product Price: ${productPrice}`);
+            // console.log('\n');
+
+            result.productName = productName;
+            result.productPrice = productPrice;
         } else {
             console.log("No configuration for this site.");
         }
     } catch (error) {
         console.error(`Failed to scrape ${url}:`, error);
     }
+    return result;
 }
 
 // Example usage
