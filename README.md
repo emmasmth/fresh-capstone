@@ -126,3 +126,5 @@ This project will consist of four main inclusions:
 * Click the pinned getGFTD logo icon to the right of the search bar at the top of your screen.
 
 ## How to Test
+
+This project was tested in adherence with the methods used by the current development team of getGFTD. Currently, they manually test their work. To test this project, ensure that the database accurately reflects changes and that no errors appear on the logs.
