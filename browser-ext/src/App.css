@@ -2,6 +2,22 @@
   text-align: center;
 }
 
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.logo-signed-out {
+  top: 5%;
+  position: absolute;
+}
+
+.sign-in {
+  align-items: center;
+  top: 5%;
+  position: absolute;
+}
+
 .sign-out {
   top: 5%;
   right: 20px;
@@ -10,7 +26,7 @@
   position: absolute;
 }
 
-.sign-out-button {
+button {
   background-color: #0636b4;
   color: white;
   text-align: center;
@@ -21,7 +37,7 @@
   cursor: pointer;
 }
 
-.logo {
+.logo-signed-in {
   top: 5%;
   left: 20px;
   position: absolute;

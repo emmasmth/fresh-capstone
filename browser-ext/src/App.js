@@ -33,6 +33,7 @@ function App() {
         setPassword('');
       })
       .catch((error) => {
+        alert("Please enter the email and password to an existing account.")
         console.log(error.message);
       });
   };
@@ -48,6 +49,7 @@ function App() {
         console.log("Sign out successful!");
       })
       .catch((error) => {
+        alert("Error signing out.");
         console.log("could not sign out");
       });
   };
@@ -57,14 +59,14 @@ function App() {
     <div className="App">
       {isLoggedIn ? (
         <>
-          <div class = "logo">
+          <div class = "logo-signed-in">
             <a href = "https://www.getgftdapp.com/" target="_blank" rel="noopener noreferrer">
               <img src = {logo} height = {75} alt = "getGFTD logo" />
             </a>
           </div>
 
           <div class = "sign-out">
-            <button class = 'sign-out-button' type='button' onClick={handleSignOut}>Sign out</button>
+            <button type='button' onClick={handleSignOut}>Sign out</button>
           </div>
 
           <div class = "scrollable-content">
@@ -75,28 +77,36 @@ function App() {
         </>
       ) : (
         <>
-          <form onSubmit = {handleLogin}>
+          <div class = "">
+            <a href = "https://www.getgftdapp.com/" target="_blank" rel="noopener noreferrer">
+                <img src = {logo} height = {150} alt = "getGFTD logo" />
+              </a>
+          </div>
+          <br />
+          <br />
+        <form onSubmit = {handleLogin}>
           <label>
-            Email:
             <input 
               type = "email" 
               name = "email" 
               value = {email}
+              placeholder='Email: '
               onChange={(e) => setEmail(e.target.value)} 
             />
           </label>
-          <br/>
+          <br />
           <label>
-            Password:
             <input
               type = "password" 
               name = "password" 
               value = {password}
+              placeholder='Password: '
               onChange={(e) => setPassword(e.target.value)} 
             />
           </label>
           <br />
-          <button type = "submit">Login</button>
+          <br />
+          <button type = "submit">Sign in</button>
         </form>
       </>
     
