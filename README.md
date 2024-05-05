@@ -69,6 +69,12 @@ This project will consist of four main inclusions:
 
 ### Installation for Chrome Browser Extension
 
+* If you have completed the steps to install the iOS Application, run the following command first. Otherwise, skip this step and continue with the next one.
+
+  ```
+  cd ../..
+  ```
+
 * Navigate to the 'browser-ext' directory of the project.
 
    ```
