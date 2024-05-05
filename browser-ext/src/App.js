@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, setDoc, getFirestore, collection, addDoc } from 'firebase/firestore';
 import logo from './logo.jpg';
 
 function App() {
@@ -9,6 +10,20 @@ function App() {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+
+  // const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [itemName, setItemName] = useState('');
+  const [price, setPrice] = useState('');
+  const [tax, setTax] = useState('');
+  const [tip, setTip] = useState('');
+  const [store, setStore] = useState('');
+  const [url, setURL] = useState('');
+  const [shoutout, setShoutout] = useState('');
+  const [event, setEvent] = useState('');
+  const [eventDate, setEventDate] = useState('');
+  const [desc, setDesc] = useState('');
+  const [type, setType] = useState('');
 
   useEffect(() => {
     const auth = getAuth();
@@ -37,6 +52,68 @@ function App() {
         console.log(error.message);
       });
   };
+
+  const handleSelectChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    console.log('add wish button pressed');
+    console.log(value);
+
+    if(!itemName || !price || !value || !tax || !tip)
+    {
+      alert('Wish creation failed.', 'Item name, price, and wishlist must be filled out. If tax and tip not applicable, put 0.00.');
+      return;
+    }
+
+    const userData = {
+      UID: user.uid,
+      item: itemName,
+      price: parseFloat(price),
+      tax: parseFloat(tax),
+      tip: parseFloat(tip),
+      list: value,
+      store: store,
+      url: url,
+      shoutout: shoutout,
+      event: event,
+      eventDate: eventDate,
+      description: desc,
+      type: type,
+      status: 0
+    }
+
+    writedoc(user.uid, userData, value);
+    alert('Wish added!', 'Your wish has successfully been added to your chosen wishlist.');
+    setItemName('');
+    setPrice('');
+    setTax('');
+    setTip('');
+    setValue(null);
+    setStore('');
+    setURL('');
+    setShoutout('');
+    setEvent('');
+    setEventDate('');
+    setDesc('');
+    setType('');
+  }
+
+  const writedoc = (userId, userData, listName) =>
+    {
+        const db = getFirestore();
+        const userRef = doc(db, 'users', userId);
+        const wishlistRef = collection(userRef, listName);
+        addDoc(wishlistRef, userData)
+        .then(() => {
+          console.log("wish document written");
+        })
+        .catch((error) => {
+          console.error('error writing wish doc');
+        });
+    };
 
   const handleSignOut = () => {
     console.log('sign out button pressed');
@@ -70,7 +147,136 @@ function App() {
           </div>
 
           <div class = "scrollable-content">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <label htmlFor="dropdown">Select a wishlist: </label>
+            <select id="dropdown" value={value} onChange={handleSelectChange}>
+              <option value="">Select an option</option>
+              <option value="Just Because">Just Because</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Career Success">Career Success</option>
+              <option value="Wedding">Wedding</option>
+            </select>
+
+            <br />
+            <br />
+
+            <form onSubmit = {handleAdd}>
+              <label>
+                <input 
+                  type = "text" 
+                  name = "itemName" 
+                  value = {itemName}
+                  placeholder='Item Name: '
+                  onChange={(e) => setItemName(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "number" 
+                  name = "price" 
+                  value = {price}
+                  placeholder='Price: '
+                  onChange={(e) => setPrice(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "number" 
+                  name = "tax" 
+                  value = {tax}
+                  placeholder='Tax Amount: '
+                  onChange={(e) => setTax(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "number" 
+                  name = "tip" 
+                  value = {tip}
+                  placeholder='Tip Amount: '
+                  onChange={(e) => setTip(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "text" 
+                  name = "store" 
+                  value = {store}
+                  placeholder='Store Name: '
+                  onChange={(e) => setStore(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "url" 
+                  name = "url" 
+                  value = {url}
+                  placeholder='Store URL: '
+                  onChange={(e) => setURL(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "text" 
+                  name = "shoutout" 
+                  value = {shoutout}
+                  placeholder='Store Shoutout: '
+                  onChange={(e) => setShoutout(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "text" 
+                  name = "event" 
+                  value = {event}
+                  placeholder='Event: '
+                  onChange={(e) => setEvent(e.target.value)} 
+                />
+              </label>
+
+              <label>Select a date for the event: </label>
+              <label> 
+                <input
+                  type = "date" 
+                  name = "eventDate" 
+                  value = {eventDate}
+                  placeholder='Event Date: '
+                  onChange={(e) => setEventDate(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "text" 
+                  name = "desc" 
+                  value = {desc}
+                  placeholder='Description: '
+                  onChange={(e) => setDesc(e.target.value)} 
+                />
+              </label>
+
+              <label>
+                <input
+                  type = "text" 
+                  name = "type" 
+                  value = {type}
+                  placeholder='Type: '
+                  onChange={(e) => setType(e.target.value)} 
+                />
+              </label>
+              <br />
+              <br />
+              <button type = "submit">Add Wish</button>
+            </form>
           </div>
           
           
@@ -106,7 +312,7 @@ function App() {
           </label>
           <br />
           <br />
-          <button type = "submit">Sign in</button>
+          <button type = "submit">Sign In</button>
         </form>
       </>
     
