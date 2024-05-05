@@ -119,7 +119,7 @@ This project will consist of four main inclusions:
 * Click the **Load unpacked** button in the upper left-hand corner.
 * Upload the **build** folder. The full path is fresh-capstone/browser-ext/build.
 * Click the puzzle piece to the right of the search bar at the top of your screen.
-* Pin **Capstone Browser Extension**.
+* Click the pushpin icon next to **Capstone Browser Extension**.
 
 ### How to Run the Chrome Browser Extension
 
