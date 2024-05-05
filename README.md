@@ -114,12 +114,12 @@ This project will consist of four main inclusions:
    npm run build
    ```
 
-* Go to [chrome://extensions/](chrome://extensions/).
-* Toggle on 'Developer mode' in the upper right-hand corner.
-* Click the 'Load unpacked' button in the upper left-hand corner.
-* Upload the 'build' folder. The full path is fresh-capstone/browser-ext/build.
+* Go to chrome://extensions/.
+* Toggle on **Developer mode** in the upper right-hand corner.
+* Click the **Load unpacked** button in the upper left-hand corner.
+* Upload the **build** folder. The full path is fresh-capstone/browser-ext/build.
 * Click the puzzle piece to the right of the search bar at the top of your screen.
-* Pin 'Capstone Browser Extension'.
+* Pin **Capstone Browser Extension**.
 
 ### How to Run the Chrome Browser Extension
 
