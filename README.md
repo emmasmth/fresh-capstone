@@ -23,15 +23,22 @@ This project will consist of four main inclusions:
    ```
    git clone <paste URL>
    ```
-   ```
-   cd fresh-capstone/capstone
-   ```
+
 * Sign up for [Firebase](https://firebase.google.com/) - must use a Gmail email address.
 * Click **Go to console**.
 * Click **Create a project** and follow prompts.
 * Once project is created and open, click the **Web** icon (**</>**) and register your app.
 * Copy the block of text containing the apiKey, authDomain, projectId, storageBucket, messagingSenderId, and appId.
-* Now, create a file (within the capstone directory, which you should currently be in) called config.js.
+
+### Installation for iOS Application
+
+* Navigate to the 'capstone' directory of the project.
+
+   ```
+   cd fresh-capstone/capstone
+   ```
+
+* Now, create a file called config.js.
 * In config.js, type the following code, replacing the relevant code with your own Firebase connectivity information, copied earlier.
    ```
    module.exports = {
@@ -51,7 +58,7 @@ This project will consist of four main inclusions:
    npm install
    ```
 
-## How to Run
+### How to Run the iOS Application
 
 
 * After completing the installation instructions, follow the step below to simulate the project. 
@@ -59,5 +66,57 @@ This project will consist of four main inclusions:
    ```
    npm run ios
    ```
+
+### Installation for Chrome Browser Extension
+
+* Navigate to the 'browser-ext' directory of the project.
+
+   ```
+   cd fresh-capstone/browser-ext
+   ```
+
+* Navigate to the 'src' directory of the project.
+
+   ```
+   cd src
+   ```
+
+* Now, create a file called config.js.
+* In config.js, type the following code, replacing the relevant code with your own Firebase connectivity information, copied earlier.
+   ```
+   module.exports = {
+      firebaseConfig: {
+        apiKey: <Your API key>,
+        authDomain: <Your Auth Domain>,
+        projectId: <Your Project ID>,
+        storageBucket: <Your Storage Bucket>,
+        messagingSenderId: <Your Messaging Sender ID>,
+        appId: <Your App ID>
+        }
+   };
+   ```
+
+* Navigate back to the 'browser-ext' directory of the project.
+
+   ```
+   cd ..
+   ```
+   
+* In the command line, run the following line of code:
+
+   ```
+   npm run build
+   ```
+
+* Go to [chrome://extensions/](chrome://extensions/).
+* Toggle on 'Developer mode' in the upper right-hand corner.
+* Click the 'Load unpacked' button in the upper left-hand corner.
+* Upload the 'build' folder. The full path is fresh-capstone/browser-ext/build.
+* Click the puzzle piece to the right of the search bar at the top of your screen.
+* Pin 'Capstone Browser Extension'.
+
+### How to Run the Chrome Browser Extension
+
+* Click the pinned getGFTD logo icon to the right of the search bar at the top of your screen.
 
 ## How to Test
