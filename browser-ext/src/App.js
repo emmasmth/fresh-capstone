@@ -64,7 +64,7 @@ function App() {
 
     if(!itemName || !price || !value || !tax || !tip)
     {
-      alert('Wish creation failed.', 'Item name, price, and wishlist must be filled out. If tax and tip not applicable, put 0.00.');
+      alert('Wish creation failed. Item name, price, and wishlist must be filled out. If tax and tip not applicable, put 0.00.');
       return;
     }
 
@@ -86,7 +86,7 @@ function App() {
     }
 
     writedoc(user.uid, userData, value);
-    alert('Wish added!', 'Your wish has successfully been added to your chosen wishlist.');
+    alert('Wish added! Your wish has successfully been added to your chosen wishlist.');
     setItemName('');
     setPrice('');
     setTax('');
@@ -277,9 +277,8 @@ function App() {
               <br />
               <button type = "submit">Add Wish</button>
             </form>
+
           </div>
-          
-          
         </>
       ) : (
         <>
