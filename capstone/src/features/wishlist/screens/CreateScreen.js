@@ -54,6 +54,7 @@ const CreateScreen = ({route}) => {
     return () => unsubscribe();
 }, []);
 
+const forceUpdate = useState()[1].bind(null, {});
 
 const handleAdd = () => {
     console.log('add wish button pressed');
@@ -89,6 +90,11 @@ const handleAdd = () => {
     }
     writedoc(user.uid, userData, value);
     Alert.alert('Wish added!', 'Your wish has successfully been added to your chosen wishlist.');
+    clearFields();
+    forceUpdate();
+}
+
+const clearFields = () => {
     setItemName('');
     setPrice('');
     setTax('');
