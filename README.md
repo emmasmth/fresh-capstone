@@ -18,10 +18,10 @@ At this stage, there is no differentiation between usage for administrators and 
 ## Project Description
 
 This project will consist of four main inclusions:
-1. Thank You Cards
-2. SMS Scheduling
-3. Environmental Brand Shopping Category
-4. Browser Extension
+1.  Environmental Brand Shopping Category
+2.  Browser Extension
+3.  Thank You Cards
+4.  SMS Scheduling
 
 ## Installation Instructions
 
