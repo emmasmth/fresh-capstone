@@ -4,6 +4,8 @@ import WebView from 'react-native-webview';
 import { useNavigation } from '@react-navigation/native';
 import CreateScreen from "../../wishlist/screens/CreateScreen";
 import {scrapeProduct} from '../Scraper/scraper'
+import { ScrollView } from 'react-native';
+
 
 const EnvironmentalScreen = () => {
     const [url, setURL] = useState('');
@@ -11,12 +13,36 @@ const EnvironmentalScreen = () => {
     const [currentUrl, setCurrentUrl] = useState(''); // State to keep track of the URL in WebView
     const navigation = useNavigation();
 
+    //ADD BRANDS HERE TO CREATE BUTTONS (does not affect scraping program)
     const predefinedSites = [
         { name: "Dr. Bronner", url: "https://www.drbronner.com" },
         { name: "Patagonia", url: "https://www.patagonia.com" },
         { name: "Bravo Sierra", url: "https://www.bravosierra.com" },
-        { name: "Mate The Label", url: "https://www.matethelabel.com"}
-
+        { name: "Mate The Label", url: "https://www.matethelabel.com"},
+        { name: "Adorable Baby", url: "https://adorablebabyus.com"},
+        { name: "Shaklee", url: "https://us.shaklee.com"},
+        { name: "Harvest and Mill", url: "https://harvestandmill.com"},
+        { name: "Proudly", url: "https://www.proudly.com"},
+        { name: "Honest", url: "https://www.honest.com"},
+        { name: "Lowens", url: "https://www.lowens.ca"},
+        { name: "Pipette Baby", url: "https://www.pipettebaby.com"},
+        { name: "Healthy Baby", url: "https://www.healthybaby.com"},
+        { name: "Wash With Water", url: "https://www.washwithwatercare.com"},
+        { name: "Attitute Living", url: "https://www.attitudeliving.com"},
+        { name: "Bravo Sierra", url: "https://www.bravosierra.com"},
+        { name: "Avalon Organics", url: "https://www.avalonorganics.com"},
+        { name: "PUUR Ingrid", url: "https://www.puuringrid.com"},
+        { name: "Rejuva Minerals", url: "https://www.rejuvaminerals.com"},
+        { name: "Well People", url: "https://www.wellpeople.com"},
+        { name: "Beauty Counter", url: "https://www.beautycounter.com"},
+        { name: "Wear Pact", url: "https://www.wearpact.com"},
+        { name: "tentree", url: "https://www.tentree.com"},
+        { name: "Mate The Label", url: "https://www.matethelabel.com"},
+        { name: "Outer Known", url: "https://www.outerknown.com"},
+        { name: "Harvest and Mill", url: "https://www.harvestandmill.com"},
+        { name: "Dime Beauty", url: "https://dimebeautyco.com"},
+        { name: "REI", url: "https://www.rei.com"},
+        { name: "Adidas", url: "https://www.adidas.com"}
     ]
 
     const handleOpenSite = (siteUrl) => {
@@ -58,7 +84,7 @@ const EnvironmentalScreen = () => {
         <View style={{ flex: 1 }}>
             {showWebView ? (
                 <>
-                    <WebView //shows the web browser
+                    <WebView
                         source={{ uri: url }}
                         style={{ flex: 1 }}
                         onNavigationStateChange={navState => setCurrentUrl(navState.url)}
@@ -67,36 +93,34 @@ const EnvironmentalScreen = () => {
                     <Button title="X" onPress={handleClose} />
                 </>
             ) : (
-                // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View style={styles.tileContainer}>
-                    {predefinedSites.map((site, index) => (
-                        <TouchableOpacity key={index} style={styles.tile} onPress={() => handleOpenSite(site.url)}>
-                            <Text style={styles.tileText}>{site.name}</Text>
-                        </TouchableOpacity>
-                    ))}
-                    <TextInput
-                        placeholder="Enter URL (htts://www.example.com)"
-                        onChangeText={text => setURL(text)}
-                        value={url}
-                        style={{ marginBottom: 10, borderWidth: 1, padding: 8, width: 300 }}
-                        autoCapitalize="none"
-                    />
-                    <Button title="Open URL" onPress={handleSubmit} />
-                </View>
+                <ScrollView style={{ flex: 1 }}>
+                    <View style={styles.tileContainer}>
+                        {predefinedSites.map((site, index) => (
+                            <TouchableOpacity key={index} style={styles.tile} onPress={() => handleOpenSite(site.url)}>
+                                <Text style={styles.tileText}>{site.name}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </ScrollView>
             )}
+            {/* <TextInput
+                placeholder="Enter URL (htts://www.example.com)"
+                onChangeText={text => setURL(text)}
+                value={url}
+                style={{ marginBottom: 10, borderWidth: 1, padding: 8, width: 300, alignSelf: 'center' }}
+                autoCapitalize="none"
+            />
+            <Button title="Open URL" onPress={handleOpenSite} /> */}
         </View>
     );
 };
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     tileContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 10  // Add padding for better spacing and scroll behavior
     },
     tile: {
         margin: 10,

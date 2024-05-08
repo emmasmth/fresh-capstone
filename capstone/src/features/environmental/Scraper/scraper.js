@@ -3,7 +3,10 @@ const cheerio = require("cheerio");
 import axios from "axios";
 
 //npm run start
+
+
 // Define the sites configuration object
+//each site needs to be individually hardcoded based on website, sites may change
 const sites = {
     'drbronner.com': {
         nameSelector: 'h1[itemprop="name"]',
@@ -19,12 +22,11 @@ const sites = {
         priceSelector: 'span.value[itemprop="price"]',
         priceAttr: 'content'
     },
-    'dimebeautyco.com': { //price is giant number
+    'dimebeautyco.com': {
         nameSelector:'h1.text-heading.text-heading--medium-regular.title.h3',
         priceSelector: 'span[data-role="price"]'
-        // priceAttr: 'data-product-price'
     },
-    'proudly.com': { //price is blank
+    'proudly.com': {
         nameSelector: 'h2.product__title',
         priceSelector: 'span.rc-option__price.rc_widget__price.rc_widget__price--onetime'
     },
@@ -41,7 +43,7 @@ const sites = {
         priceSelector: 'input.product-info__price',
         priceAttr: 'value'
     },
-    'healthybaby.com': { //name blank, price "NaN"
+    'healthybaby.com': {
         nameSelector: 'h1.product-info__title.h3',
         priceSelector: 'span.final-price'
     },
@@ -57,11 +59,11 @@ const sites = {
         nameSelector: 'h1.text-4xl.leading-none.font-themedium.text-softBlack.mb-6',
         priceSelector: 'span.price-for-qty'
     },
-    'avalonorganics.com': { //prices r weird (says their $0.01, pulls NaN)
+    'avalonorganics.com': {
         nameSelector: 'h1.product-single__title',
         priceSelector: 'p.visually-hidden[data-product-status]'
     },
-    'puuringrid.com': { //rounds up price
+    'puuringrid.com': {
         nameSelector: 'h1.product-page--heading',
         priceSelector: 'div.product-price--original'
     },
@@ -69,11 +71,11 @@ const sites = {
         nameSelector: 'h2',
         priceSelector: 'div#totalprice'
     },
-    'wellpeople.com': { //no name and price Nan
-        nameSelector: 'h1.sc-fzoxKX.dnzdae', // Be cautious as these classes might change
+    'wellpeople.com': { 
+        nameSelector: 'h1.sc-fzoxKX.dnzdae', 
         priceSelector: 'span.text-price.mr-2.price'
     },
-    'beautycounter.com': { //not woring, rly weird formatting
+    'beautycounter.com': { 
         nameSelector: 'span.product-name',
         priceSelector: 'span.product-price'
     },
@@ -81,23 +83,19 @@ const sites = {
         nameSelector: 'h1.name',
         priceSelector: 'span.a-offscreen'
     },
-    'wearpact.com': { // not working
+    'wearpact.com': { 
         nameSelector: 'div.product-title',
         priceSelector: 'div.dollar.red'
     },
-    'tentree.com': { //not working
+    'tentree.com': { 
         nameSelector: 'h4#pdp-product-title',
         priceSelector: 'div#product_price'
     },
-    // 'matethelabel.com': {
-    //     nameSelector: 'h1.product__title',
-    //     priceSelector: 'span.money'
-    // },
     'matethelabel.com': {
         nameSelector: 'h1.product__title',
         priceSelector: 'span[itemprop="price"] .money'
     },
-    'outerknown.com': { //price is there twice
+    'outerknown.com': {
         nameSelector: 'h1.product__title.h6',
         priceSelector: 'span.price-item.price-item--regular'
     },
@@ -109,7 +107,7 @@ const sites = {
         nameSelector: 'h1#product-page-title',
         priceSelector: 'span#buy-box-product-price'
     },
-    'adidas.com': { //no name, price repeats
+    'adidas.com': {
         nameSelector: 'span',
         priceSelector: 'div.gl-price-item'
     }

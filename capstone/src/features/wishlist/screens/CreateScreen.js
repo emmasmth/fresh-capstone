@@ -12,6 +12,7 @@ const CreateScreen = ({route}) => {
     // Check if initialData is received properly
     console.log('Received initial data:', initialData);
 
+    //so they can also accept initial data from web scrape
     const { initialData } = route.params || {};
     const [itemName, setItemName] = useState(initialData ? initialData.itemName : '');
     const [price, setPrice] = useState(initialData ? initialData.price : '');
@@ -20,6 +21,7 @@ const CreateScreen = ({route}) => {
     const [tax, setTax] = useState('0.00');  // Always initialized to 0.00
     const [tip, setTip] = useState('0.00');  // Always initialized to 0.00
 
+    //optional ones
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [user, setUser] = useState('');
