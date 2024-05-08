@@ -3,7 +3,8 @@
 ## Manuals
 
 Admin: At this stage, there is no differentiation between usage for administrators and users.
-Users: Click [here](https://github.com/emmasmth/fresh-capstone/blob/main/user-manual-environmental-feature.md) for the manual on the Environmental feature. Click [here](https://github.com/emmasmth/fresh-capstone/blob/main/user-manual-browser-extension.md) for the manual on the Chrome Browser Extension.
+Users: Click [here](https://github.com/emmasmth/fresh-capstone/blob/main/user-manual-environmental-feature.md) for the manual on the Environmental feature. 
+Click [here](https://github.com/emmasmth/fresh-capstone/blob/main/user-manual-browser-extension.md) for the manual on the Chrome Browser Extension.
 
 ## Contributors
 **Programmers:** Peter Hope and Emma Smith
