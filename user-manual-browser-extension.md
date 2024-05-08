@@ -3,7 +3,6 @@
 ### Step 1
 
 Follow the installation instructions for the Chrome Browser Extension on the [README.md](https://github.com/emmasmth/fresh-capstone/blob/main/README.md#installation-for-chrome-browser-extension).
-
 ### Step 2
 
 In the browser extension, sign in to an already existing account. The email must be entered in a valid email format. If you do not have an account, please create one using the iOS application. 
