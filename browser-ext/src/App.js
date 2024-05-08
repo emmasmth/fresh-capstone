@@ -147,7 +147,7 @@ function App() {
           </div>
 
           <div class = "scrollable-content">
-            <label htmlFor="dropdown">Select a wishlist: </label>
+            <label htmlFor="dropdown">Select a wishlist*: </label>
             <select id="dropdown" value={value} onChange={handleSelectChange}>
               <option value="">Select an option</option>
               <option value="Just Because">Just Because</option>
@@ -168,7 +168,7 @@ function App() {
                   type = "text" 
                   name = "itemName" 
                   value = {itemName}
-                  placeholder='Item Name: '
+                  placeholder='Item Name*: '
                   onChange={(e) => setItemName(e.target.value)} 
                 />
               </label>
@@ -178,7 +178,7 @@ function App() {
                   type = "number" 
                   name = "price" 
                   value = {price}
-                  placeholder='Price: '
+                  placeholder='Price*: '
                   onChange={(e) => setPrice(e.target.value)} 
                 />
               </label>
@@ -188,7 +188,7 @@ function App() {
                   type = "number" 
                   name = "tax" 
                   value = {tax}
-                  placeholder='Tax Amount: '
+                  placeholder='Tax Amount*: '
                   onChange={(e) => setTax(e.target.value)} 
                 />
               </label>
@@ -198,7 +198,7 @@ function App() {
                   type = "number" 
                   name = "tip" 
                   value = {tip}
-                  placeholder='Tip Amount: '
+                  placeholder='Tip Amount*: '
                   onChange={(e) => setTip(e.target.value)} 
                 />
               </label>
@@ -295,7 +295,7 @@ function App() {
               type = "email" 
               name = "email" 
               value = {email}
-              placeholder='Email: '
+              placeholder='Email*: '
               onChange={(e) => setEmail(e.target.value)} 
             />
           </label>
@@ -305,7 +305,7 @@ function App() {
               type = "password" 
               name = "password" 
               value = {password}
-              placeholder='Password: '
+              placeholder='Password*: '
               onChange={(e) => setPassword(e.target.value)} 
             />
           </label>
