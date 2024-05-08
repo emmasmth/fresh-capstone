@@ -16,7 +16,7 @@ Use the **Login** screen to sign in to an already-existing account, or use the *
 
 The remaining screens will now be accessible. 
 * The **Account** screen displays basic account information. If you wish to log out of the account, you may do so on this screen.
-* The ** My Wishlists** screen displays all the added wishes separated by wish lists. This screen will be blank if no wish has been added to the account.
+* The **My Wishlists** screen displays all the added wishes separated by wish lists. This screen will be blank if no wish has been added to the account.
 * To add wishes to the account, the **Add a Wish** screen allows you to type in details to do so. The wishlist, item name, price, tax amount, and tip amount are all required. Price, tax amount, and tip amount must all be numeric. A value of 0.00 is accepted if tax and/or tip is not applicable. All other fields are optional.
 * The **Environmental** screen allows you to choose an item from 25 pre-selected environmentally-conscious brands and pre-fills the form on the **Add a Wish** screen.
 * The **Friends** screen displays all the wishes separated by their wish lists.
