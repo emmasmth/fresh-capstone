@@ -2,7 +2,7 @@
 
 ### Step 1
 
-Follow the installation instructions for the Chrome Browser Extension on the [README.md]([https://github.com/emmasmth/fresh-capstone/blob/main/README.md](https://github.com/emmasmth/fresh-capstone/blob/main/README.md#installation-for-chrome-browser-extension)).
+Follow the installation instructions for the Chrome Browser Extension on the [README.md](https://github.com/emmasmth/fresh-capstone/blob/main/README.md#installation-for-chrome-browser-extension).
 
 ### Step 2
 
